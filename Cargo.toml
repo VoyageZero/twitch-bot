@@ -1,5 +1,6 @@
 [workspace]
 members = [
+    "api-gateway",
     "shared",
     "server",
     "client-desktop", "api-gateway",
