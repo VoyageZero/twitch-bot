@@ -3,6 +3,10 @@
 version = 4
 
 [[package]]
+name = "api-gateway"
+version = "0.1.0"
+
+[[package]]
 name = "client-desktop"
 version = "0.1.0"
 
