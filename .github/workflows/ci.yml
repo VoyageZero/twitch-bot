@@ -5,9 +5,18 @@ on:
   push:
     branches-ignore:
       - main
+    paths-ignore:
+      - '**.md'
+      - '.gitignore'
+      - 'docs/**'
   pull_request:
     branches:
       - main 
+      - dev
+    paths-ignore:
+      - '**.md'
+      - '.gitignore'
+      - 'docs/**'
 
 env:
   CARGO_TERM_COLOR: always
