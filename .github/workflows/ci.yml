@@ -109,7 +109,7 @@ jobs:
         run: cargo install cargo-audit --locked
 
       - name: Audit dependencies
-        run: cargo audit
+        run: cargo audit --file audit.toml
 
   secrets:
     name: Secrets Scanning
