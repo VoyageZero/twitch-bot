@@ -1,9 +1,5 @@
-[
-advisories
-]
-ignore = [
-  # RUSTSEC-2023-0071: rsa crate Marvin Attack (no fix available)
-  # Originates from sqlx-cli dev tool only, not present in production.
-  # Revists when rsa > 0.9.10 is released.
-  "RUSTSEC-2023-0071"
-]
+[advisories]
+# RUSTSEC-2023-0071: rsa crate Marvin Attack (no fix available)
+# Originates from sqlx-cli dev tool only, not present in production.
+# Revists when rsa > 0.9.10 is released.
+ignore = ["RUSTSEC-2023-0071"]
