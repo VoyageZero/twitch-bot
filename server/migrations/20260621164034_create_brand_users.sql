@@ -17,4 +17,7 @@ ALTER TABLE voyage_bot.brand_users ENABLE ROW LEVEL SECURITY;
 ALTER TABLE voyage_bot.brand_users FORCE ROW LEVEL SECURITY;
 
 CREATE POLICY brand_users_isolation ON voyage_bot.brand_users
-    USING (brand_id = current_setting('app.current_brand_id', TRUE)::UUID);
+    USING (
+        user_id = current_setting('app.current_user_id', TRUE)::UUID
+        OR brand_id = current_setting('app.current_brand_id', TRUE)::UUID
+    );
