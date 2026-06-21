@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS voyage_bot.user_platform_connections (
         ON DELETE CASCADE,
     platform_id UUID NOT NULL REFERENCES voyage_bot.platforms(id),
     credentials TEXT NOT NULL,
-    scopes TEXT,
+    scopes TEXT[],
     is_enabled BOOLEAN NOT NULL DEFAULT true,
     connected_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     expires_at TIMESTAMPTZ,
@@ -17,8 +17,8 @@ CREATE TABLE IF NOT EXISTS voyage_bot.user_platform_connections (
     CONSTRAINT user_platform_connections_credentials_non_empty
         CHECK (char_length(trim(credentials)) > 0),
 
-    CONSTRAINT user_platform_connections_scopes_max_length
-        CHECK (scopes IS NULL OR char_length(scopes) <= 1000),
+    CONSTRAINT user_platform_connections_scopes_max_count
+        CHECK (scopes IS NULL OR array_length(scopes, 1) <= 50),
 
     CONSTRAINT user_platform_connections_connected_at_not_future
         CHECK (connected_at <= NOW()),
